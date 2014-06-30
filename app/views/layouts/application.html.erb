@@ -7,6 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <h1> 101 ways to get your rails site hacked </h1>
+  <% if current_user %>
+    logged in as: <%= current_user.email %>,
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+  <% else %>
+    not logged in. 
+    <%= link_to "sign in", new_user_session_path %>,
+    <%= link_to "sign up", new_user_registration_path %>
+
+  <% end %>
+  <br>
+</header>
 
 <%= yield %>
 
