@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module BadRailsIdeas
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('lib/misc')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -19,5 +20,6 @@ module BadRailsIdeas
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.action_controller.permit_all_parameters = true
   end
 end
