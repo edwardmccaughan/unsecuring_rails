@@ -21,17 +21,13 @@ class RecipesController < ApplicationController
 
     db = SQLite3::Database.new "db/development.sqlite3"
 
-    sql = 'INSERT INTO recipes (name, instructions) VALUES ("' + name +' ","' + instructions + '");'
-    #raise sql
+    @sql = 'INSERT INTO recipes (name, instructions) VALUES ("' + name +' ","' + instructions + '");'
 
-    db.execute_batch(sql)
-
-    render text: "ran sql: #{sql}. User = #{User.first.admin}"
+    db.execute_batch(@sql)
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recipe
+        def set_recipe
       @recipe = Recipe.find(params[:id])
     end
 end

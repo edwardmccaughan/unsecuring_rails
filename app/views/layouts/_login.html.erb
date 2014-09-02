@@ -1,0 +1,5 @@
+<%= form_for(:user, :url => session_path(:user), html: {id: "login_form"}) do |f| %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.submit 'Sign in' %>
+<% end %>

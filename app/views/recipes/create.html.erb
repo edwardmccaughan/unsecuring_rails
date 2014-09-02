@@ -1,0 +1,16 @@
+<h1>form value:  </h1>
+<h2 class="text-primary"><%= params[:recipe][:instructions] %></h2>
+
+
+
+<h1>sql template:  </h1>
+<h2 class="text-primary">'INSERT INTO recipes (name, instructions) VALUES ("' + name +' ","' + instructions + '");'</h2>
+
+
+
+
+<hr>
+
+<h1>ran sql:  </h1>
+<h2 class="text-danger"><%= @sql %></h2>
+<h3> Current user is admin: <span class="text-danger"><%= current_user.admin? %></span></h3>

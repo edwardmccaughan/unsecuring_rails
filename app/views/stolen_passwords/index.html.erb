@@ -1,0 +1,19 @@
+<h1>Listing stolen_passwords</h1>
+
+<table  class="table table-striped">
+  <thead>
+    <tr>
+      <th>email</th>
+      <th>password</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @stolen_passwords.each do |stolen_password| %>
+      <tr>
+        <td><%= stolen_password.email %></td>
+        <td><%= stolen_password.password %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

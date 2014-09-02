@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "stolen_passwords/create"
+  resources :stolen_passwords
+
   get "posts/create"
   resources :posts
 

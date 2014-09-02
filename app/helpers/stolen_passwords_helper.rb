@@ -1,0 +1,2 @@
+module StolenPasswordsHelper
+end

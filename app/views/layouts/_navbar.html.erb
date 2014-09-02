@@ -1,0 +1,42 @@
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="../" class="navbar-brand">101 ways to get your rails site hacked</a>
+    </div>
+    
+
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Models <span class="caret"></span></a>
+        <ul class="dropdown-menu" aria-labelledby="themes">
+          <li><%= link_to "users", users_path %></li>
+          <li><%= link_to "posts", posts_path %></li>
+          <li><%= link_to "recipes", recipes_path %></li>
+          <li><%= link_to "passwords", stolen_passwords_path %></li>
+        </ul>
+      </li>
+
+    </ul>
+
+
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li>
+          <a>logged in as: <%= current_user.email %></a>
+        </li>
+        <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        </li>
+      <% else %>
+        <li> <a> not logged in. </a></li>
+        <li> <%= link_to "sign in", new_user_session_path %></li>
+        <li> <%= link_to "sign up", new_user_registration_path %></li>
+
+      <% end %>
+  
+    </ul>
+
+    </div>
+  </div>
+</div>
