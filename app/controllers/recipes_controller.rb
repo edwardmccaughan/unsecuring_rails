@@ -16,18 +16,21 @@ class RecipesController < ApplicationController
   end
 
   def create
-    name         = params[:recipe][:name]
-    instructions = params[:recipe][:instructions]
+    @name         = params[:recipe][:name]
+    @instructions = params[:recipe][:instructions]
 
     db = SQLite3::Database.new "db/development.sqlite3"
 
-    @sql = 'INSERT INTO recipes (name, instructions) VALUES ("' + name +' ","' + instructions + '");'
+    @sql = "INSERT INTO recipes (name, instructions) VALUES ('#{@name}','#{@instructions}');"
 
     db.execute_batch(@sql)
+
+  rescue SQLite3::SQLException
+    raise "invalid sql! #{@sql}"
   end
 
   private
-        def set_recipe
+    def set_recipe
       @recipe = Recipe.find(params[:id])
     end
 end

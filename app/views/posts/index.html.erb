@@ -1,35 +1,37 @@
-<h1>Listing posts</h1>
+<div id="posts_index">
+  <h1>Listing posts</h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>author</th>
-      <th>featured?</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to post.title, post %></td>
-        <td><%= post.body %></td>
-        <td>
-          <% if post.user %>
-            <%= post.user.email %>
-          <% end %>
-        </td>
-        <td><%= post.featured? %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <th>Title</th>
+        <th>Body</th>
+        <th>author</th>
+        <th>featured?</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td class="title"><%= link_to post.title, post %></td>
+          <td><%= post.body %></td>
+          <td>
+            <% if post.user %>
+              <%= post.user.email %>
+            <% end %>
+          </td>
+          <td><%= post.featured? %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Post', new_post_path %>
+  <br>
 
-<%= link_to 'Evil New Post', "http://localhost:3000/posts/create?post[title]=evil&post[body]=stuff" %>
+  <%= link_to 'New Post', new_post_path %>
+  <br>
+  <%= link_to 'Delete my posts', delete_my_posts_posts_url %>
+</div>

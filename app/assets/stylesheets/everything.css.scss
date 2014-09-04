@@ -1,3 +1,28 @@
 #maincontent{
   padding-top: 50px
 }
+
+
+#homepage{
+  
+  .about {
+    margin-top: 23em;
+    text-align: right;
+
+    img{
+      height: 40px
+    }
+  }
+}
+
+
+#posts_index{
+  table .title {width:200px}
+}
+
+
+#posts_show p{
+  font-size: 1.5em;
+  line-height: 1.8em;
+
+}

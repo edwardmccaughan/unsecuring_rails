@@ -1,7 +1,7 @@
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a href="../" class="navbar-brand">101 ways to get your rails site hacked</a>
+      <a href="../" class="navbar-brand">Unsecured rails</a>
     </div>
     
 
@@ -30,8 +30,25 @@
         </li>
       <% else %>
         <li> <a> not logged in. </a></li>
-        <li> <%= link_to "sign in", new_user_session_path %></li>
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">sign in <span class="caret"></span></a>
+          <ul class="dropdown-menu" aria-labelledby="themes">
+            <li>
+              <%= form_for(:user, :url => session_path(:user), html: {id: "login_form"}) do |f| %>
+                <%= f.text_field :email %>
+                <%= f.password_field :password %>
+                <%= f.submit 'Sign in' %>
+              <% end %>
+
+            </li>
+          </ul>
+        </li>
+
         <li> <%= link_to "sign up", new_user_registration_path %></li>
+
+        
+
 
       <% end %>
   

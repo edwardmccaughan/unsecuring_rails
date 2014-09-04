@@ -28,14 +28,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to @post, notice: 'Post was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -44,7 +40,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @post, notice: params.inspect }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -63,6 +59,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def delete_my_posts
+    current_user.posts.each{ |p| p.destroy}
+    redirect_to posts_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -71,6 +72,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :featured)
+      params.require(:post).permit(:title, :body)
     end
 end
