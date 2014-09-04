@@ -1,28 +1,16 @@
-== README
+== Unsecured Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This site is a deliberately inscure rails demo site, that is vulnerable to some typical "hacks" that can I've read about, but never actually tried in person.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Posts body field is vulnerable to XSS on the show page (but not the index)
+* Posts are vulnerable to CSRF (the token check has been disabled)
+* The new fprm/action is vulnerable to sql injection
+* session cookies can be stolen with wireshark and then reused in chrome using EditThisCookie extension (although this applies to any site without ssl...)
+
+
+== Installing
+it's just a normal rails site with sqlite, so just run the usual bundle, rake db:migrate and rails s.
+
+== Want to contribute more hacks?
+Forks and pull requests are welcome!
